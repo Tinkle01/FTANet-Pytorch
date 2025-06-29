@@ -99,12 +99,12 @@ def load_train_data(path):
 
 def load_data(fp, mode='train'):
 
-    X = np.load('../../cc_attention2/data/cfp/' + fp)
+    X = np.load('./data/cfp/' + fp)
     L = X.shape[2]
     num_seg = L // LEN_SEG
     X = torch.tensor(np.array([X[:, :, LEN_SEG * i:LEN_SEG * i + LEN_SEG] for i in range(num_seg)]), dtype=torch.float32)
 
-    f = open('../../cc_attention2/data/f0ref/' + fp.replace('.npy', '') + '.txt')
+    f = open('./data/f0ref/' + fp.replace('.npy', '') + '.txt')
     y = []
     for line in f.readlines():
         y.append(float(line.strip().split()[1]))
